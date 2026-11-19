@@ -12,7 +12,7 @@ class Source:
         rows=[dict(key=KEY,id="v+2",delete=False),dict(key=KEY,id="v+1",delete=False),dict(key="附件/z.txt",id="other",delete=False)]
         if self.stage>=1:rows.insert(0,dict(key=KEY,id="delete-3",delete=True))
         if self.stage>=2:rows=[r for r in rows if r["id"]!="v+1"]
-        return rows
+        return sorted(rows,key=lambda r:r["key"].encode("utf-8"))
     def route(self,method,path,q,headers,body):
         if path=="/research" and "versions" in q:
             rows=self.versions();offset=0

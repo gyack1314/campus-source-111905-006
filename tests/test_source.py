@@ -9,7 +9,7 @@ class Contract(SourceCase):
     def test_version_directory_pair(self):
         self.control(1);s,h,b=self.request("/research?versions=&encoding-type=url")
         root=E.fromstring(b);self.assertEqual(root.findtext("s:IsTruncated",namespaces=N),"true")
-        self.assertEqual(root.findtext("s:NextVersionIdMarker",namespaces=N),"v+2")
+        self.assertEqual(root.findtext("s:NextVersionIdMarker",namespaces=N),"delete-3")
     def test_delete_marker_not_empty_file(self):
         self.control(1)
         self.assertEqual(self.object()[0],404)
